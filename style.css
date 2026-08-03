@@ -1,0 +1,283 @@
+* {
+    box-sizing: border-box;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0b0b0b;
+    color: #f5d77a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 전체 영역 */
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+
+/* 제목 */
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 35px;
+    color: #d4af37;
+    text-shadow: 0 0 15px rgba(212,175,55,0.5);
+}
+
+h2 {
+    color: #f5d77a;
+}
+
+
+/* 시작 화면 */
+
+select {
+    width: 180px;
+    padding: 12px;
+    font-size: 18px;
+    background: #171717;
+    color: #f5d77a;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+}
+
+input[type="password"] {
+    width: 220px;
+    padding: 12px;
+    font-size: 18px;
+    background: #171717;
+    color: #f5d77a;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+
+/* 기본 버튼 */
+
+#startBtn,
+#resetBtn,
+#closePopup,
+#welcomeStartBtn,
+#pwConfirmBtn {
+
+    background: linear-gradient(
+        145deg,
+        #d4af37,
+        #9b7a12
+    );
+
+    color: #111;
+
+    padding: 12px 25px;
+
+    box-shadow:
+        0 0 10px rgba(212,175,55,0.4);
+
+}
+
+
+button:hover {
+    transform: scale(1.05);
+}
+
+
+/* 게임 상단 */
+
+.topBar {
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+
+    color:#f5d77a;
+    font-size:20px;
+
+}
+
+
+/* 문제 버튼 */
+
+#buttonGrid {
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:12px;
+
+}
+
+
+.problemBtn {
+
+    aspect-ratio:1/1;
+
+    background:
+    linear-gradient(
+        145deg,
+        #d4af37,
+        #8f6d0b
+    );
+
+    color:#111;
+
+    font-size:25px;
+
+    box-shadow:
+    inset 0 0 10px rgba(255,255,255,0.2),
+    0 5px 10px rgba(0,0,0,0.5);
+
+}
+
+
+.problemBtn:hover {
+
+    box-shadow:
+    0 0 20px rgba(212,175,55,0.8);
+
+}
+
+
+/* 사용한 버튼 */
+
+.problemBtn.used {
+
+    background:#333;
+
+    color:#777;
+
+    box-shadow:none;
+
+    cursor:pointer;
+
+}
+
+
+
+/* 팝업 */
+
+.popup {
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,0.75);
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.popupContent {
+
+    width:85%;
+
+    max-width:800px;
+
+    background:#151515;
+
+    border:2px solid #d4af37;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    animation: popupShow 0.3s ease;
+
+}
+
+
+
+#popupHint {
+
+    color:#fff;
+
+    line-height:1.7;
+
+    font-size:18px;
+
+    margin:25px 0;
+
+}
+
+
+
+/* 팝업 애니메이션 */
+
+@keyframes popupShow {
+
+    from {
+
+        transform:scale(0.7);
+
+        opacity:0;
+
+    }
+
+    to {
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+/* 모바일 */
+
+@media(max-width:400px){
+
+    h1 {
+
+        font-size:32px;
+
+    }
+
+
+    #buttonGrid {
+
+        gap:8px;
+
+    }
+
+
+    .problemBtn {
+
+        font-size:20px;
+
+    }
+
+}

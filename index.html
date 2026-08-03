@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세종언록 힌트</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0b0b0b">
+    <link rel="icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>세종언록 힌트</h1>
+
+    <!-- 첫 화면 -->
+    <div id="welcomeScreen">
+
+        <button id="welcomeStartBtn">
+            세종언록 시작
+        </button>
+
+    </div>
+
+    <!-- 비밀번호 화면 -->
+    <div id="passwordScreen" style="display:none;">
+
+        <h2>관리자 비밀번호</h2>
+
+        <input type="password" id="pwInput" placeholder="비밀번호 입력">
+
+        <br><br>
+
+        <button id="pwConfirmBtn">
+            확인
+        </button>
+
+        <p id="pwError" style="display:none; color:#ff6b6b; margin-top:15px;">
+            비밀번호가 올바르지 않습니다.
+        </p>
+
+    </div>
+
+    <!-- 시작 화면 -->
+    <div id="startScreen" style="display:none;">
+
+        <h2>사용 가능한 힌트 개수</h2>
+
+        <select id="hintCount">
+            <script>
+                for(let i=1;i<=25;i++){
+                    document.write(`<option value="${i}">${i}개</option>`);
+                }
+            </script>
+        </select>
+
+        <br><br>
+
+        <button id="startBtn">
+            게임 시작
+        </button>
+
+    </div>
+
+    <!-- 게임 화면 -->
+    <div id="gameScreen" style="display:none;">
+
+        <div class="topBar">
+
+            <span id="remainText">
+                남은 힌트 : 0
+            </span>
+
+        </div>
+
+        <div id="buttonGrid"></div>
+
+    </div>
+
+</div>
+
+<!-- 팝업 -->
+
+<div id="popup" class="popup">
+
+    <div class="popupContent">
+
+        <h2 id="popupTitle"></h2>
+
+        <p id="popupHint"></p>
+
+        <button id="closePopup">
+            닫기
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+(function(){
+    const ADMIN_PW = "adminsj";
+
+    const welcomeScreen = document.getElementById("welcomeScreen");
+    const passwordScreen = document.getElementById("passwordScreen");
+    const startScreen = document.getElementById("startScreen");
+
+    const welcomeStartBtn = document.getElementById("welcomeStartBtn");
+    const pwInput = document.getElementById("pwInput");
+    const pwConfirmBtn = document.getElementById("pwConfirmBtn");
+    const pwError = document.getElementById("pwError");
+
+    welcomeStartBtn.addEventListener("click", () => {
+        welcomeScreen.style.display = "none";
+        passwordScreen.style.display = "block";
+        pwInput.value = "";
+        pwError.style.display = "none";
+        pwInput.focus();
+    });
+
+    function checkPassword(){
+        if(pwInput.value === ADMIN_PW){
+            passwordScreen.style.display = "none";
+            startScreen.style.display = "block";
+        } else {
+            pwError.style.display = "block";
+            pwInput.value = "";
+            pwInput.focus();
+        }
+    }
+
+    pwConfirmBtn.addEventListener("click", checkPassword);
+
+    pwInput.addEventListener("keydown", (e) => {
+        if(e.key === "Enter"){
+            checkPassword();
+        }
+    });
+})();
+</script>
+
+<script src="hints.js"></script>
+<script src="script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+    });
+}
+</script>
+
+</body>
+</html>
