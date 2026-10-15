@@ -32,6 +32,14 @@ const popupTitle = document.getElementById("popupTitle");
 const popupHint = document.getElementById("popupHint");
 const closePopup = document.getElementById("closePopup");
 
+const hintView = document.getElementById("hintView");
+const answerView = document.getElementById("answerView");
+const answerBtn = document.getElementById("answerBtn");
+const popupAnswer = document.getElementById("popupAnswer");
+const closeAnswer = document.getElementById("closeAnswer");
+
+let currentKey = "";
+
 
 
 // 시작 버튼
@@ -93,6 +101,7 @@ function createButtons(){
 
     });
 
+
 }
 
 
@@ -101,6 +110,7 @@ function createButtons(){
 // 힌트 열기
 
 function openHint(letter,btn){
+
 
 
     if(btn.classList.contains("used")){
@@ -157,19 +167,42 @@ function openHint(letter,btn){
 
 function showHintPopup(letter){
 
+    currentKey = letter;
+
     popupTitle.innerText =
         letter==="ㅇ2" ? "ㅇ" : letter;
 
 
     popupHint.innerText =
-        hints[letter] || 
+        hints[letter] ||
         "아직 등록된 힌트가 없습니다.";
 
+
+    // 항상 힌트 화면부터 보여줌
+
+    hintView.style.display="block";
+    answerView.style.display="none";
 
 
     popup.style.display="flex";
 
 }
+
+
+
+
+// 답보기 (추가 차감 없음)
+
+answerBtn.addEventListener("click",()=>{
+
+    popupAnswer.innerText =
+        answers[currentKey] ||
+        "아직 등록된 정답이 없습니다.";
+
+    hintView.style.display="none";
+    answerView.style.display="block";
+
+});
 
 
 
@@ -189,6 +222,12 @@ function updateRemain(){
 // 팝업 닫기
 
 closePopup.addEventListener("click",()=>{
+
+    popup.style.display="none";
+
+});
+
+closeAnswer.addEventListener("click",()=>{
 
     popup.style.display="none";
 

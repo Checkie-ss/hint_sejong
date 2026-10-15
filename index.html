@@ -93,11 +93,35 @@
 
         <h2 id="popupTitle"></h2>
 
-        <p id="popupHint"></p>
+        <!-- 힌트 보기 -->
+        <div id="hintView">
 
-        <button id="closePopup">
-            닫기
-        </button>
+            <p id="popupHint"></p>
+
+            <button id="answerBtn">
+                답보기
+            </button>
+
+            <br>
+
+            <button id="closePopup">
+                닫기
+            </button>
+
+        </div>
+
+        <!-- 정답 보기 -->
+        <div id="answerView" style="display:none;">
+
+            <div class="answerLabel">정답</div>
+
+            <p id="popupAnswer"></p>
+
+            <button id="closeAnswer">
+                닫기
+            </button>
+
+        </div>
 
     </div>
 

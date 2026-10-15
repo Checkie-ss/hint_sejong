@@ -1,4 +1,4 @@
-const CACHE_NAME = "sejong-hint-v5";
+const CACHE_NAME = "sejong-hint-v8";
 const ASSETS = [
   "./index.html",
   "./style.css",

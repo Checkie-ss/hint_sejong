@@ -76,6 +76,8 @@ button {
 #startBtn,
 #resetBtn,
 #closePopup,
+#closeAnswer,
+#answerBtn,
 #welcomeStartBtn,
 #pwConfirmBtn {
 
@@ -202,6 +204,10 @@ button:hover {
 
     max-width:800px;
 
+    max-height:90vh;
+
+    overflow-y:auto;
+
     background:#151515;
 
     border:2px solid #d4af37;
@@ -227,6 +233,42 @@ button:hover {
     font-size:18px;
 
     margin:25px 0;
+
+}
+
+
+
+/* 답보기 */
+
+#answerBtn {
+
+    margin-bottom:12px;
+
+}
+
+.answerLabel {
+
+    color:#d4af37;
+
+    font-size:16px;
+
+    margin-top:10px;
+
+}
+
+#popupAnswer {
+
+    color:#f5d77a;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    line-height:1.6;
+
+    margin:15px 0 30px;
+
+    white-space:pre-line;
 
 }
 
